@@ -1,5 +1,16 @@
+type Mutation{
+    createBook(bookName: String!, isbn: String!, authorId: ID!): Book!
+    addBookToAuthor(book:bookInput!): Book!
+    createAuthor(name: String!,email: String!): Author!
+    createReview(review: String!, bookId: ID!): Review!
+    updateBook(book: bookInput!,id:ID!): Book!
+    deleteBook(id: ID!): Book!
+}
+
 type Query{
     books: [Book]
+    authors: [Author]
+    reviews: [Review]
 }
 type Book{
     id: ID!
@@ -8,11 +19,18 @@ type Book{
     author: Author!
     reviews: [Review]
 }
+input bookInput{
+    bookName: String!
+    isbn: String!
+    authorId: ID!
+}
 type Author{
     id: ID!
     name: String!
+    books: [Book]
 }
 type Review{
     id: ID!
-    review: String!
+    review: String
+    books: [Book]
 }
