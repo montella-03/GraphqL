@@ -1,0 +1,18 @@
+type Query{
+    books: [Book]
+}
+type Book{
+    id: ID!
+    bookName: String!
+    isbn: String!
+    author: Author!
+    reviews: [Review]
+}
+type Author{
+    id: ID!
+    name: String!
+}
+type Review{
+    id: ID!
+    review: String!
+}
